@@ -1,0 +1,199 @@
+/* =============================================================================
+   PULSE DESIGN SYSTEM
+   Brand: Anthropic (via Geist Studio)
+   All tokens in @theme blocks are exposed as Tailwind utilities automatically.
+   e.g. --color-book-cloth → bg-book-cloth, text-book-cloth
+   ============================================================================= */
+
+
+/* =============================================================================
+   1. BRAND COLOR PALETTE
+   Anthropic's official palette — source of truth for all colors.
+   ============================================================================= */
+
+@theme {
+  /* -- Slate (near-blacks / dark surfaces) ----------------------------------- */
+  --color-slate-dark:   #141413;   /* official brand dark */
+  --color-slate-medium: #262625;
+  --color-slate-light:  #40403E;
+
+  /* -- Cloud (warm mid-grays) ------------------------------------------------ */
+  --color-cloud-dark:   #666663;
+  --color-cloud-medium: #b0aea5;   /* official brand mid gray */
+  --color-cloud-light:  #BFBFBA;
+
+  /* -- Ivory (warm off-whites / light surfaces) ------------------------------ */
+  --color-ivory-dark:   #e8e6dc;   /* official brand light gray */
+  --color-ivory-medium: #F0F0EB;
+  --color-ivory-light:  #faf9f5;   /* official brand light */
+
+  /* -- Brand warm tones ------------------------------------------------------ */
+  --color-book-cloth: #d97757;   /* primary brand — official orange accent */
+  --color-kraft:      #D4A27F;   /* accent — golden tan */
+  --color-manilla:    #EBDBBC;   /* soft warm sand */
+
+  /* -- Brand cool tones ------------------------------------------------------ */
+  --color-sage: #788c5d;   /* official green accent */
+
+  /* -- Absolute -------------------------------------------------------------- */
+  --color-black: #000000;
+  --color-white: #FFFFFF;
+
+  /* -- Functional ------------------------------------------------------------ */
+  --color-focus: #6a9bcc;   /* official brand blue / focus rings */
+  --color-error: #BF4D43;   /* destructive / error */
+}
+
+
+/* =============================================================================
+   2. SEMANTIC COLOR OVERRIDES  (light mode)
+   Maps the Anthropic palette onto shadcn's CSS variables.
+   These drive bg-background, text-foreground, bg-primary, etc.
+   ============================================================================= */
+
+:root {
+  /* Surfaces */
+  --background:         #faf9f5;   /* ivory-light */
+  --foreground:         #141413;   /* slate-dark */
+  --card:               #F0F0EB;   /* ivory-medium */
+  --card-foreground:    #141413;
+  --popover:            #FFFFFF;
+  --popover-foreground: #141413;
+
+  /* Brand / Primary action */
+  --primary:            #d97757;   /* book-cloth */
+  --primary-foreground: #faf9f5;   /* ivory-light */
+
+  /* Secondary action */
+  --secondary:            #e8e6dc;   /* ivory-dark */
+  --secondary-foreground: #141413;
+
+  /* Muted / subtle */
+  --muted:            #F0F0EB;   /* ivory-medium */
+  --muted-foreground: #666663;   /* cloud-dark */
+
+  /* Accent */
+  --accent:            #D4A27F;   /* kraft */
+  --accent-foreground: #141413;
+
+  /* Destructive */
+  --destructive: #BF4D43;
+
+  /* Chrome */
+  --border: #e8e6dc;   /* ivory-dark */
+  --input:  #e8e6dc;
+  --ring:   #6a9bcc;   /* focus / blue accent */
+}
+
+/* -- Dark mode ------------------------------------------------------------- */
+
+.dark {
+  --background:         #141413;   /* slate-dark */
+  --foreground:         #faf9f5;   /* ivory-light */
+  --card:               #262625;   /* slate-medium */
+  --card-foreground:    #faf9f5;
+  --popover:            #262625;
+  --popover-foreground: #faf9f5;
+
+  --primary:            #d97757;   /* book-cloth */
+  --primary-foreground: #faf9f5;
+
+  --secondary:            #40403E;   /* slate-light */
+  --secondary-foreground: #faf9f5;
+
+  --muted:            #262625;   /* slate-medium */
+  --muted-foreground: #b0aea5;   /* cloud-medium */
+
+  --accent:            #40403E;   /* slate-light */
+  --accent-foreground: #D4A27F;   /* kraft */
+
+  --destructive: #BF4D43;
+  --border: #40403E;   /* slate-light */
+  --input:  #40403E;
+  --ring:   #6a9bcc;   /* focus / blue accent */
+}
+
+
+/* =============================================================================
+   3. TYPOGRAPHY
+   Styrene A & B (sans) + Tiempos Headline & Text (serif) — commercial fonts.
+   Add @font-face rules here once you have the font files licensed.
+   TODO: --font-mono, display type scale, line heights, letter spacing
+   ============================================================================= */
+
+@theme {
+  --font-sans:  "Poppins", Arial, ui-sans-serif, system-ui, sans-serif;   /* headings */
+  --font-serif: "Lora", Georgia, ui-serif, serif;                         /* body text */
+
+  /* Font weights */
+  --font-weight-regular:  400;
+  --font-weight-medium:   500;
+  --font-weight-semibold: 600;
+  --font-weight-bold:     700;
+}
+
+
+/* =============================================================================
+   4. SPACING & SIZING
+   TODO: fill in when layout is defined.
+   ============================================================================= */
+
+/* @theme {
+  --size-sidebar-width:     16rem;
+  --size-topbar-height:     3.5rem;
+  --size-content-max-width: 72rem;
+  --size-panel-width:       20rem;
+} */
+
+
+/* =============================================================================
+   5. SHADOWS
+   TODO: fill in.
+   ============================================================================= */
+
+/* @theme {
+  --shadow-xs:    ...;
+  --shadow-sm:    ...;
+  --shadow-md:    ...;
+  --shadow-lg:    ...;
+  --shadow-xl:    ...;
+  --shadow-2xl:   ...;
+  --shadow-brand: 0 0 0 3px #CC785C;
+  --shadow-focus: 0 0 0 3px #61AAF2;
+} */
+
+
+/* =============================================================================
+   6. MOTION & TRANSITIONS
+   TODO: fill in.
+   ============================================================================= */
+
+/* @theme {
+  --duration-instant: 75ms;
+  --duration-fast:    150ms;
+  --duration-normal:  250ms;
+  --duration-slow:    400ms;
+  --duration-slower:  600ms;
+
+  --ease-default: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-in:      cubic-bezier(0.4, 0, 1, 1);
+  --ease-out:     cubic-bezier(0, 0, 0.2, 1);
+  --ease-spring:  cubic-bezier(0.34, 1.56, 0.64, 1);
+} */
+
+
+/* =============================================================================
+   7. Z-INDEX SCALE
+   TODO: fill in.
+   ============================================================================= */
+
+/* @theme {
+  --z-base:     0;
+  --z-raised:   10;
+  --z-dropdown: 100;
+  --z-sticky:   200;
+  --z-overlay:  300;
+  --z-modal:    400;
+  --z-toast:    500;
+  --z-tooltip:  600;
+} */
