@@ -1,0 +1,39 @@
+[project]
+name = "pulse-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+authors = [
+    { name = "Nick Pellegrin", email = "nicholaspellegrin@yahoo.com" }
+]
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi[standard]>=0.135.1",
+    "sqlalchemy[asyncio]>=2.0.40",
+    "asyncpg>=0.29.0",
+    "alembic>=1.16.0",
+    "pydantic-settings>=2.8.0",
+    "apscheduler>=3.10,<4",
+]
+
+[build-system]
+requires = ["uv_build>=0.10.4,<0.11.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "pyright>=1.1.408",
+    "pytest>=9.0.2",
+    "pytest-anyio>=0.0.0",
+    "ruff>=0.15.6",
+]
+
+[tool.ruff]
+line-length = 100
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP"]
+
+[tool.pyright]
+venvPath = "."
+venv = ".venv"
