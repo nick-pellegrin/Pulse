@@ -4,7 +4,7 @@ To run
   docker compose -f docker/docker-compose.yml up timescaledb -d
 
   # 2. Copy .env and set DATABASE_URL (already defaults correctly for Docker)
-  cp .env.example .env
+  copy .env.example .env
 
   # 3. Run migrations (from api/)
   cd api && uv run alembic upgrade head

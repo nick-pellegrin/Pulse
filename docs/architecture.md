@@ -9,19 +9,19 @@ co-located for shared CI/CD and infrastructure configuration.
 
 ### `web/` — Frontend
 - **Runtime**: Bun
-- **Framework**: React 19 + Vite
+- **Framework**: React 19 (Bun bundler, no Vite)
 - **Styling**: Tailwind CSS v4 + shadcn/ui
 - **Port**: 5173 (dev), served as static files in production
 
 ### `api/` — Backend
-- **Runtime**: Python 3.13
+- **Runtime**: Python 3.14
 - **Package manager**: uv
 - **Port**: 8000
 
 ## Communication
 
 The web frontend communicates with the API over HTTP. In development, the API
-URL is configured via the `VITE_API_URL` environment variable.
+URL is configured via the `API_URL` environment variable.
 
 ## Infrastructure
 

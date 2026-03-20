@@ -1,0 +1,139 @@
+/* ── Node state color tokens ──────────────────────────────────────────────────*/
+:root {
+  --state-healthy: #788c5d;       /* sage */
+  --state-healthy-bg: #788c5d22;
+  --state-failed: #bf4d43;        /* error */
+  --state-failed-bg: #bf4d4322;
+  --state-running: #6a9bcc;       /* focus */
+  --state-running-bg: #6a9bcc22;
+  --state-drifting: #d4a27f;      /* kraft */
+  --state-drifting-bg: #d4a27f22;
+  --state-stale: #b0aea5;         /* cloud-medium */
+  --state-stale-bg: #b0aea522;
+  --state-skipped: #888;
+  --state-skipped-bg: #88888822;
+}
+
+/* ── Pulse animations ─────────────────────────────────────────────────────────*/
+@keyframes pulse-running {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--state-running) 60%, transparent); }
+  50%       { box-shadow: 0 0 0 6px transparent; }
+}
+
+@keyframes pulse-failed {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--state-failed) 60%, transparent); }
+  50%       { box-shadow: 0 0 0 6px transparent; }
+}
+
+@keyframes pulse-drifting {
+  0%, 100% { box-shadow: 0 0 0 0 color-mix(in srgb, var(--state-drifting) 60%, transparent); }
+  50%       { box-shadow: 0 0 0 6px transparent; }
+}
+
+/* ── Pipeline node styles ─────────────────────────────────────────────────────*/
+.pipeline-node {
+  min-width: 140px;
+  border-radius: 8px;
+  border: 1.5px solid var(--node-border, #555);
+  background: var(--node-bg, #1a1a1a);
+  padding: 8px 12px;
+  cursor: pointer;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.pipeline-node:hover {
+  border-color: var(--node-border-hover, #888);
+}
+
+.pipeline-node.selected {
+  outline: 2px solid var(--node-border, #555);
+  outline-offset: 2px;
+}
+
+.pipeline-node[data-state="healthy"] {
+  --node-border: var(--state-healthy);
+  --node-bg: var(--state-healthy-bg);
+  --node-border-hover: color-mix(in srgb, var(--state-healthy) 80%, white);
+}
+.pipeline-node[data-state="failed"] {
+  --node-border: var(--state-failed);
+  --node-bg: var(--state-failed-bg);
+  --node-border-hover: color-mix(in srgb, var(--state-failed) 80%, white);
+  animation: pulse-failed 2s ease-in-out infinite;
+}
+.pipeline-node[data-state="running"] {
+  --node-border: var(--state-running);
+  --node-bg: var(--state-running-bg);
+  --node-border-hover: color-mix(in srgb, var(--state-running) 80%, white);
+  animation: pulse-running 1.5s ease-in-out infinite;
+}
+.pipeline-node[data-state="drifting"] {
+  --node-border: var(--state-drifting);
+  --node-bg: var(--state-drifting-bg);
+  --node-border-hover: color-mix(in srgb, var(--state-drifting) 80%, white);
+  animation: pulse-drifting 3s ease-in-out infinite;
+}
+.pipeline-node[data-state="stale"] {
+  --node-border: var(--state-stale);
+  --node-bg: var(--state-stale-bg);
+  --node-border-hover: color-mix(in srgb, var(--state-stale) 80%, white);
+}
+.pipeline-node[data-state="skipped"] {
+  --node-border: var(--state-skipped);
+  --node-bg: var(--state-skipped-bg);
+}
+
+.pipeline-node__label {
+  font-size: 11px;
+  font-weight: 600;
+  color: var(--node-border);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.pipeline-node__name {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--foreground);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  max-width: 160px;
+}
+
+.pipeline-node__meta {
+  font-size: 11px;
+  color: var(--muted-foreground);
+  margin-top: 4px;
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.pipeline-node__anomaly-badge {
+  background: var(--state-failed);
+  color: white;
+  border-radius: 10px;
+  padding: 1px 6px;
+  font-size: 10px;
+  font-weight: 600;
+}
+
+/* ── React Flow overrides ─────────────────────────────────────────────────────*/
+.react-flow__edge-path {
+  stroke-width: 1.5;
+}
+
+.react-flow__controls button {
+  background: hsl(var(--card));
+  border-color: hsl(var(--border));
+  color: hsl(var(--foreground));
+}
+
+.react-flow__minimap {
+  background: hsl(var(--card));
+  border: 1px solid hsl(var(--border));
+  border-radius: 8px;
+}

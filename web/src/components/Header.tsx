@@ -17,6 +17,7 @@ import { cn } from "@/lib/utils";
 
 const TABS = [
   { label: "Home",     path: "/" },
+  { label: "Graph",    path: "/graph" },
   { label: "Insights", path: "/insights" },
   { label: "Data",     path: "/data" },
 ] as const;
